@@ -1,0 +1,21 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "API layer for the Fibonacci calculator.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"All tests passed\"",
+    "start:prod": "node index.js",
+    "start:dev": "nodemon"
+  },
+  "author": "Gerald Haxhi",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^1.19.3",
+    "pg": "^7.12.1",
+    "redis": "^2.8.0"
+  }
+}
