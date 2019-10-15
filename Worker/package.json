@@ -1,0 +1,17 @@
+{
+  "name": "worker",
+  "version": "1.0.0",
+  "description": "Contains the logic to calculate the nth Fibonacci number",
+  "main": "index.js",
+  "scripts": {
+    "start:prod": "node index.js",
+    "start:dev": "nodemon",
+    "test": "echo \"All tests passed\""
+  },
+  "author": "Gerald Haxhi",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^1.19.3",
+    "redis": "^2.8.0"
+  }
+}
