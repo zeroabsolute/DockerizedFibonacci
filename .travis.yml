@@ -12,8 +12,8 @@ script:
 after_success:
   - docker build -t ghaxhi/fibonacci-client -f ./Client/Dockerfile.prod ./Client
   - docker build -t ghaxhi/fibonacci-server -f ./Server/Dockerfile.prod ./Server
-  - docker build -t ghaxhi/fibonacci-worker -f ./Client/Dockerfile.prod ./Worker
-  - docker build -t ghaxhi/fibonacci-nginx -f ./Client/Dockerfile.prod ./Nginx
+  - docker build -t ghaxhi/fibonacci-worker -f ./Worker/Dockerfile.prod ./Worker
+  - docker build -t ghaxhi/fibonacci-nginx -f ./Nginx/Dockerfile.prod ./Nginx
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
