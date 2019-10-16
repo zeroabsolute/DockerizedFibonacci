@@ -1,0 +1,23 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t ghaxhi/fibonacci-react-test -f ./Client/Dockerfile.dev ./Client
+
+script:
+  - docker run ghaxhi/fibonacci-react-test npm test -- --coverage
+
+after_success:
+  - docker build -t ghaxhi/fibonacci-client -f ./Client/Dockerfile.prod ./Client
+  - docker build -t ghaxhi/fibonacci-server -f ./Server/Dockerfile.prod ./Server
+  - docker build -t ghaxhi/fibonacci-worker -f ./Client/Dockerfile.prod ./Worker
+  - docker build -t ghaxhi/fibonacci-nginx -f ./Client/Dockerfile.prod ./Nginx
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  - docker push ghaxhi/fibonacci-client
+  - docker push ghaxhi/fibonacci-server
+  - docker push ghaxhi/fibonacci-worker
+  - docker push ghaxhi/fibonacci-nginx
