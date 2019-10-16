@@ -7,7 +7,7 @@ before_install:
   - docker build -t ghaxhi/fibonacci-react-test -f ./Client/Dockerfile.dev ./Client
 
 script:
-  - docker run ghaxhi/fibonacci-react-test npm test -- --coverage
+  - docker run -e CI=true ghaxhi/fibonacci-client-test npm test -- --coverage
 
 after_success:
   - docker build -t ghaxhi/fibonacci-client -f ./Client/Dockerfile.prod ./Client
