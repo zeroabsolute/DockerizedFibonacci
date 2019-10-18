@@ -60,6 +60,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
+        <h1>Dockerized Fibonacci</h1>
+        <br /><br />
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <label>Enter your index:</label>
           <input 
