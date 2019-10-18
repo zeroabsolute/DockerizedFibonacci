@@ -1,0 +1,34 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "Client",
+      "image": "ghaxhi/fibonacci-client",
+      "hostname": "client",
+      "essential": false
+    }, 
+    {
+      "name": "Server",
+      "image": "ghaxhi/fibonacci-server",
+      "hostname": "api",
+      "essential": false
+    }, 
+    {
+      "name": "Worker",
+      "image": "ghaxhi/fibonacci-worker",
+      "essential": false
+    }, 
+    {
+      "name": "Nginx",
+      "image": "ghaxhi/fibonacci-nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["client", "server"]
+    }
+  ]
+}
