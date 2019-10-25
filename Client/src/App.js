@@ -26,7 +26,7 @@ class App extends React.Component {
   
   async fetchIndexes() {
     const response = await Axios.get('/api/values/all');
-    this.setState({ seenIndexes: response.data });
+    this.setState({ seenIndexes: response.data || [] });
   }
 
   async handleSubmit(e) {
