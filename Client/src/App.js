@@ -21,7 +21,10 @@ class App extends React.Component {
 
   async fetchValues() {
     const response = await Axios.get('/api/values/current');
-    this.setState({ values: response.data });
+    
+    if (response && response.data && Array.isArray(response.data)) {
+      this.setState({ values: response.data });
+    }
   }
   
   async fetchIndexes() {
@@ -40,7 +43,9 @@ class App extends React.Component {
   }
 
   renderSeenIndexes() {
-    return this.state.seenIndexes.map(({ number }) => number).join(',');
+    return this.state.seenIndexes && Array.isArray(this.state.seenIndexes)
+      ? this.state.seenIndexes.map(({ number }) => number).join(',')
+      : null;
   }
 
   renderCalculatedValues() {
@@ -60,7 +65,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <h1>Dockerized Fibonacci</h1>
+        <h1>Dockerized Fibonacci v.7</h1>
         <br /><br />
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <label>Enter your index:</label>
